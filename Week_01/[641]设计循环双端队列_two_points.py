@@ -40,63 +40,91 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
-import collections
-
-
 class MyCircularDeque:
+
     def __init__(self, k: int):
         """
         Initialize your data structure here. Set the size of the deque to be k.
         """
-        self.q = collections.deque(maxlen=k)
+        self.max_len = k
+        self.cur_len = 0
+        # self.queue = [0 for _ in range(self.max_len)]
+        # self.front, self.rear = 0, 0  # front/rear 皆初始化为零，front指向队头，rear指向队尾待插入位置
+        self.queue = [0 for _ in range(self.max_len + 1)]
+        self.front, self.rear = 0, 1
 
     def insertFront(self, value: int) -> bool:
         """
         Adds an item at the front of Deque. Return true if the operation is successful.
         """
-        return len(self.q) < self.q.maxlen and (self.q.appendleft(value) or True)
+        if self.cur_len == self.max_len:
+            return False
+        # self.front = (self.front - 1) % self.max_len
+        self.queue[self.front] = value
+        self.front = (self.max_len + self.front - 1) % self.max_len
+        self.cur_len += 1
+        return True
 
     def insertLast(self, value: int) -> bool:
         """
         Adds an item at the rear of Deque. Return true if the operation is successful.
         """
-        return len(self.q) < self.q.maxlen and (self.q.append(value) or True)
+        if self.cur_len == self.max_len:
+            return False
+        self.queue[self.rear] = value
+        self.rear = (self.rear + 1) % self.max_len
+        self.cur_len += 1
+        return True
 
     def deleteFront(self) -> bool:
         """
         Deletes an item from the front of Deque. Return true if the operation is successful.
         """
-        return self.q and (self.q.popleft() or True)
+        if not self.cur_len:
+            return False
+        self.front = (self.front + 1) % self.max_len
+        self.cur_len -= 1
+        return True
 
     def deleteLast(self) -> bool:
         """
         Deletes an item from the rear of Deque. Return true if the operation is successful.
         """
-        return self.q and (self.q.pop() or True)
+        if not self.cur_len:
+            return False
+        self.rear = (self.rear - 1) % self.max_len
+        self.cur_len -= 1
+        return True
 
     def getFront(self) -> int:
         """
         Get the front item from the deque.
         """
-        return self.q[0] if self.q else -1
+        if not self.cur_len:
+            return -1
+        # return self.queue[self.front]
+        return self.queue[(self.front + 1) % self.max_len]
 
     def getRear(self) -> int:
         """
         Get the last item from the deque.
         """
-        return self.q[-1] if self.q else -1
+        if not self.cur_len:
+            return -1
+        # return self.queue[self.rear - 1]
+        return self.queue[(self.rear - 1) % self.max_len]
 
     def isEmpty(self) -> bool:
         """
         Checks whether the circular deque is empty or not.
         """
-        return not self.q
+        return not self.cur_len
 
     def isFull(self) -> bool:
         """
         Checks whether the circular deque is full or not.
         """
-        return len(self.q) == self.q.maxlen
+        return self.cur_len == self.max_len
 
 
 # Your MyCircularDeque object will be instantiated and called as such:
