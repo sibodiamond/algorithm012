@@ -1,5 +1,5 @@
-###学习笔记
-
+###### 学习笔记
+===========
 1. hashMap  
 - hashcode -> index
 - Java 通过链地址方式解决hash冲突
