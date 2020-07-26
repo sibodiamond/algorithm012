@@ -37,6 +37,9 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from typing import List
+
+
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
         res = []
