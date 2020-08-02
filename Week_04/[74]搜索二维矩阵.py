@@ -28,6 +28,7 @@
 # target = 13
 # 输出: false 
 #  Related Topics 数组 二分查找
+from typing import List
 
 
 # leetcode submit region begin(Prohibit modification and deletion)

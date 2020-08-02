@@ -31,7 +31,7 @@ class Solution:
         nums_ln = len(nums)
         self.res = float('inf')
 
-        O(M^N)
+        # O(M^N)
         def backtrace(i, counter):
             for k in range(nums[i], 0, -1):
                 if i + k >= nums_ln - 1:
