@@ -41,6 +41,7 @@ class Solution:
                     tmp = 0
                 tmp += num
             return split
+
         left, right = max(nums), sum(nums)
         while left < right:
             mid = (right + left) // 2
@@ -66,26 +67,6 @@ class Solution:
             for j in range(1, min(i, m) + 1):
                 for k in range(i):
                     dp[i][j] = min(dp[i][j], max(dp[k][j - 1], pre_sum[i] - pre_sum[k]))
-
         return dp[n][m]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
 # leetcode submit region end(Prohibit modification and deletion)

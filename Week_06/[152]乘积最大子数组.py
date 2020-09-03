@@ -16,9 +16,9 @@
 # 解释: 结果不能为 2, 因为 [-2,-1] 不是子数组。 
 #  Related Topics 数组 动态规划
 
-
 # leetcode submit region begin(Prohibit modification and deletion)
 from typing import List
+
 
 class Solution:
     # 动态规划
