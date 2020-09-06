@@ -44,11 +44,4 @@ class Solution:
         return max_area
 
 
-
-
-
-
-
-
-
 # leetcode submit region end(Prohibit modification and deletion)

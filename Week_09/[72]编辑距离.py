@@ -51,8 +51,8 @@ class Solution:
                     dp[i][j] = dp[i - 1][j - 1]
                 else:
                     dp[i][j] = min(dp[i - 1][j - 1],  # replace
-                                   dp[i - 1][j],  # remove or add
-                                   dp[i][j - 1]  # remove or add
+                                   dp[i - 1][j],  # remove w2[j-1] or add w1[i-1]
+                                   dp[i][j - 1]  # remove w1[i-1] or add w2[j-1]
                                    ) + 1
         return dp[-1][-1]
 

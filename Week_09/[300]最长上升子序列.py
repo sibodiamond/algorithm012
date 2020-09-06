@@ -20,8 +20,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     """
+    动态规划
     时间复杂度：O(n ^ 2)
-
     """
     def lengthOfLIS1(self, nums: List[int]) -> int:
         if not nums:
@@ -41,7 +41,7 @@ class Solution:
     时间复杂度：O(nlogn)
     1. tails维护的目标：
     不是最长上升子序列，而是存储：在动态地比较、生成上升子序列过程的记录；
-    tails中所存储的上升子序列长度，是客观存在的上升子序列长度。
+    tails[0..i]中所存储的上升子序列长度，等于nums[0..i]客观存在的最长上升子序列长度。
     2. 每次更新tails的目标是：
     (1)当前迭代过程中的num若num大于或等于tails[length-1],
     二分查找的索引更新规则使得,最终l=length,即向上升子序列末尾添加num;
