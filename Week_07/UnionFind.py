@@ -11,7 +11,7 @@ class UnionFind:
         root = i
         while self.p[root] != root:
             root = self.p[root]
-        # root 指向i的parent
+        # 通过上面loop使得root指向i的parent
         # 下面loop,使得i到root之间的节点的parent均指向root.
         while self.p[i] != i:
             x = i; i = self.p[i]; self.p[x] = root

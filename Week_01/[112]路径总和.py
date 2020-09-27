@@ -37,10 +37,4 @@ class Solution:
         else:
             return self.hasPathSum(root.left, sum) or self.hasPathSum(root.right, sum)
 
-
-
-
-
-
-
 # leetcode submit region end(Prohibit modification and deletion)

@@ -51,6 +51,7 @@
 #  bills[i] 不是 5 就是 10 或是 20 
 #  
 #  Related Topics 贪心算法
+from typing import List
 
 
 # leetcode submit region begin(Prohibit modification and deletion)

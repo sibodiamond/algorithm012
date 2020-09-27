@@ -59,7 +59,8 @@ def quick_sort(nums, start, end, ascent=True):
     if start >= end:
         return
     if ascent:
-        pirot = partition_ascent(nums, start, end)
+        # pirot = partition_ascent(nums, start, end)
+        pirot = partition(nums, start, end)
     else:
         pirot = partition_descent(nums, start, end)
     quick_sort(nums, start, pirot - 1, ascent)
@@ -99,12 +100,30 @@ def partition_descent(nums, start, end):
     nums[end] = tmp
     return start
 
-if __name__ == "__main__":
-    nums = [2, 8, 3, 10, 6, 34, 22, 15]
-    qs = QuickSort(nums)
 
-    qs.sort(False)
-    a = 1
+def partition(nums, start, end):
+    pivot, cnt = end, start
+    for i in range(start, end):
+        if nums[i] > nums[pivot]:
+            nums[cnt], nums[i] = nums[i], nums[cnt]
+            cnt += 1
+    nums[cnt], nums[pivot] = nums[pivot], nums[cnt]
+    return cnt
+
+
+if __name__ == "__main__":
+    import random
+    nums = [6, 8, 3, 10, 2, 34, 22, 15]
+    nums = [1, 2, 2, 1, 1]
+    nums = [random.randint(1, 100) for _ in range(10)]
+    print(nums)
+    pivot = partition(nums, 0, len(nums) - 1)
+    quick_sort(nums, 0, len(nums) - 1)
+    print(nums)
+    # qs = QuickSort(nums)
+    #
+    # qs.sort(False)
+    # a = 1
 
 
 
